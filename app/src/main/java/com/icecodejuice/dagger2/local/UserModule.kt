@@ -9,9 +9,6 @@ import javax.inject.Singleton
 @Module
 class UserModule() {
 
-    @Provides
-    fun logMeSomething(str: String) = Log.d("TAAAAAAG", str)
-
     @UserScope
     @Provides
     fun getUser() = User()

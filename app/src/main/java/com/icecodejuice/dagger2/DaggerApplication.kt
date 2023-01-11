@@ -14,7 +14,8 @@ class DaggerApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         appModule = DaggerAppComponent.builder().appModule(AppModule()).build()
-        userModule = appModule.plus(UserModule())
+        userModule = appModule.createUserComponent(UserModule())
+
     }
 
     fun getAppComponent() = appModule
@@ -22,7 +23,7 @@ class DaggerApplication: Application() {
     fun getUserComponent() = userModule
 
     fun resetUserComponent(): UserComponent {
-        userModule = appModule.plus(UserModule())
+        userModule = appModule.createUserComponent(UserModule())
         return userModule
     }
 
